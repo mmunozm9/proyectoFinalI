@@ -5,7 +5,7 @@ class Parser:
         self.valid_ports = [80, 443]
 
     def parse_request(self, request):
-        # Analizar la URL de la solicitud
+        
         url_match = re.match(r'^http://([^:/]+)(?::(\d+))?(/.*)?$', request)
         if not url_match:
             return False, "La URL no cumple con el formato esperado"
@@ -14,15 +14,13 @@ class Parser:
         port = url_match.group(2)
         path = url_match.group(3)
 
-        # Validar el puerto
+        
         if port is None:
             return False, "La URL no dispone de un puerto para la conexión con el servidor"
         if int(port) not in self.valid_ports:
             return False, f"El puerto {port} no es válido"
 
-        # Procesar la solicitud utilizando la clase controladora (simulada)
-        # Aquí podrías realizar cualquier lógica adicional que necesites
-
+      
         return True, f"Solicitud procesada: host={host}, puerto={port}, path={path}"
 
 
